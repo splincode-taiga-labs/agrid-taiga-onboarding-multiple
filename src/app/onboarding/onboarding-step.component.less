@@ -1,0 +1,38 @@
+onboarding-step {
+    .step {
+        position: relative;
+        display: grid;
+        gap: 1rem;
+        min-inline-size: 0;
+        padding: 0.25rem;
+    }
+
+    .close {
+        position: absolute;
+        z-index: 1;
+        inset-block-start: -0.25rem;
+        inset-inline-end: -0.25rem;
+        pointer-events: auto;
+
+        --tui-text-action: #b5d2ff;
+        --tui-text-action-hover: #d8e7ff;
+    }
+
+    .content {
+        min-inline-size: 0;
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        inline-size: 100%;
+
+        [tuiButton] {
+            min-inline-size: 5.75rem;
+            background: #fff;
+            color: #303744;
+        }
+    }
+}

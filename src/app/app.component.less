@@ -1,0 +1,100 @@
+:host {
+    display: block;
+    min-block-size: 100vh;
+}
+
+.page {
+    min-block-size: 100vh;
+    padding: 1.5rem;
+}
+
+.toolbar,
+.view-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.toolbar {
+    margin-block-end: 1rem;
+}
+
+.hint,
+.view-bar {
+    color: #6b7280;
+}
+
+.view-bar {
+    position: relative;
+    z-index: 3;
+    min-block-size: 3.25rem;
+    padding: 0 1rem;
+    border: 1px solid #dfe3e8;
+    border-block-end: 0;
+    border-radius: 1rem 1rem 0 0;
+    background: #fff;
+}
+
+.view-picker {
+    position: relative;
+}
+
+.view-menu {
+    position: absolute;
+    z-index: 5;
+    inset-block-start: calc(100% + 0.5rem);
+    inset-inline-start: 0;
+    display: grid;
+    gap: 0.25rem;
+    min-inline-size: 14rem;
+    padding: 0.5rem;
+    border: 1px solid #dfe3e8;
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 12%);
+}
+
+.view-menu button {
+    justify-content: flex-start;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-block-size: calc(100vh - 10rem);
+    overflow: hidden;
+    border: 1px solid #dfe3e8;
+    border-radius: 0 0 1rem 1rem;
+    background: #fff;
+    transition: grid-template-columns 220ms ease;
+
+    &.sidebar-open {
+        grid-template-columns: minmax(0, 1fr) 32rem;
+    }
+}
+
+.grid-shell {
+    min-inline-size: 0;
+}
+
+.grid {
+    inline-size: 100%;
+    block-size: calc(100vh - 13.2rem);
+}
+
+.onboarding-backdrop {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    cursor: default;
+    background: transparent;
+    overscroll-behavior: contain;
+    touch-action: none;
+}
+
+@media (max-width: 1100px) {
+    .workspace.sidebar-open {
+        grid-template-columns: minmax(0, 1fr) 26rem;
+    }
+}

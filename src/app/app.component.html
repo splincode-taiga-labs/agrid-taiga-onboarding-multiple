@@ -1,0 +1,78 @@
+<tui-root>
+    <main class="page">
+        <header class="toolbar">
+            <div>
+                <h1 tuiTitle>
+                    Планировщик путешествий
+                    <span tuiSubtitle>Два независимых онбординга без generic queue</span>
+                </h1>
+            </div>
+
+            <span class="hint">Чтобы повторить демо, удалите @onboarding.* в localStorage</span>
+        </header>
+
+        <div class="view-bar">
+            <div class="view-picker">
+                <button
+                    appearance="secondary"
+                    size="s"
+                    tuiButton
+                    type="button"
+                    (click)="viewManagement.toggleViewMenu()"
+                >
+                    Вид: {{ viewManagement.activeViewName() }}
+                </button>
+
+                @if (viewManagement.menuOpened()) {
+                    <div class="view-menu">
+                        @for (view of viewManagement.views; track view.id) {
+                            <button
+                                appearance="flat"
+                                onboardingStepDirection="right"
+                                size="s"
+                                tuiButton
+                                type="button"
+                                [onboardingStep]="
+                                    tripSetupOnboarding?.isSelectedView(view.id)
+                                        ? tripSetupOnboarding?.steps?.[0] ?? null
+                                        : null
+                                "
+                                (click)="selectView(view.id)"
+                            >
+                                {{ view.name }}
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
+
+            <span>{{ rowData.length }} маршрута</span>
+        </div>
+
+        <div class="workspace" [class.sidebar-open]="sidebar.travelPlan() !== null">
+            <section class="grid-shell">
+                <ag-grid-angular
+                    class="ag-theme-quartz grid"
+                    [columnDefs]="columnDefs"
+                    [defaultColDef]="defaultColDef"
+                    [rowData]="rowData"
+                    [rowHeight]="48"
+                    [theme]="'legacy'"
+                    (firstDataRendered)="onFirstDataRendered()"
+                    (gridReady)="onGridReady($event)"
+                />
+            </section>
+
+            @if (sidebar.travelPlan(); as travelPlan) {
+                <travel-notes-sidebar
+                    [travelPlan]="travelPlan"
+                    (closed)="closeSidebar()"
+                />
+            }
+        </div>
+    </main>
+
+    @if (onboarding.isRunning()) {
+        <div aria-hidden="true" class="onboarding-backdrop"></div>
+    }
+</tui-root>
