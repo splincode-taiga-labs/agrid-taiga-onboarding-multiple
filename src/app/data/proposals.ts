@@ -1,6 +1,6 @@
 import {type TravelPlanDto} from '../proposal.dto';
 
-export const TRAVEL_PLANS: readonly TravelPlanDto[] = [
+export const TRAVEL_PLANS: TravelPlanDto[] = [
     {
         id: 1,
         title: 'Киото и Нара',
