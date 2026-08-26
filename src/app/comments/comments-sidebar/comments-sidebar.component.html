@@ -19,7 +19,7 @@
     <nav
         class="tabs"
         onboardingStepDirection="left"
-        [onboardingStep]="onboarding?.steps[1] ?? null"
+        [onboardingStep]="tabsStep"
     >
         <button appearance="secondary" size="s" tuiButton type="button">Общее</button>
         <button appearance="flat" size="s" tuiButton type="button">Билеты</button>
@@ -29,7 +29,7 @@
     <label
         class="note"
         onboardingStepDirection="left"
-        [onboardingStep]="onboarding?.steps[2] ?? null"
+        [onboardingStep]="noteStep"
     >
         <span>Что важно не забыть</span>
         <textarea
