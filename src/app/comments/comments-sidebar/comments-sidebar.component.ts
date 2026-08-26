@@ -14,7 +14,10 @@ import {TRAVEL_NOTES_ONBOARDING} from '../comment-onboarding/comment-onboarding.
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TravelNotesSidebarComponent {
-    protected readonly onboarding = inject(TRAVEL_NOTES_ONBOARDING);
+    private readonly onboarding = inject(TRAVEL_NOTES_ONBOARDING);
+
+    protected readonly tabsStep = this.onboarding?.steps[1] ?? null;
+    protected readonly noteStep = this.onboarding?.steps[2] ?? null;
     protected note = '';
 
     @Input({required: true})
