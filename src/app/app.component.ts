@@ -4,7 +4,6 @@ import {AgGridAngular} from 'ag-grid-angular';
 import {
     AllCommunityModule,
     type ColDef,
-    type GridApi,
     type GridReadyEvent,
     ModuleRegistry,
 } from 'ag-grid-community';
@@ -20,6 +19,7 @@ import {OnboardingHeaderComponent} from './grid/onboarding-header.component';
 import {TravelPlanCellComponent} from './grid/travel-plan-cell.component';
 import {OnboardingStepDirective} from './onboarding/onboarding-step.directive';
 import {OnboardingService} from './onboarding/onboarding.service';
+import {type OnboardingStep} from './onboarding/onboarding.types';
 import {type TravelPlanDto} from './proposal.dto';
 import {
     provideTripSetupOnboarding,
@@ -117,6 +117,12 @@ export class AppComponent {
 
         this.autoStartAttempted = true;
         void this.startOnboardings();
+    }
+
+    protected viewOnboardingStep(viewId: number): OnboardingStep | null {
+        const onboarding = this.tripSetupOnboarding;
+
+        return onboarding?.isSelectedView(viewId) ? onboarding.steps[0] : null;
     }
 
     protected selectView(viewId: number): void {
