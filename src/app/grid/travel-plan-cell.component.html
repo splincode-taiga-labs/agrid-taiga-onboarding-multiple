@@ -5,11 +5,7 @@
         appearance="flat"
         onboardingStepDirection="right"
         [attr.aria-label]="'Открыть заметки: ' + travelPlan.title"
-        [onboardingStep]="
-            travelNotesOnboarding?.isFirstStepTarget(travelPlan)
-                ? travelNotesOnboarding?.steps?.[0] ?? null
-                : null
-        "
+        [onboardingStep]="isOnboardingTarget() ? onboardingStep : null"
         iconStart="@tui.message-square"
         size="xs"
         tuiIconButton
