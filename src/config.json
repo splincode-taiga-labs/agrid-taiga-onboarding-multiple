@@ -1,0 +1,6 @@
+{
+  "features": {
+    "enableTravelNotesOnboarding": true,
+    "enableTripSetupOnboarding": true
+  }
+}

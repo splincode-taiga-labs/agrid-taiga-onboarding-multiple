@@ -1,0 +1,41 @@
+<aside class="sidebar">
+    <header>
+        <h2 tuiTitle>
+            {{ travelPlan.title }}
+            <span tuiSubtitle>Заметки к маршруту</span>
+        </h2>
+
+        <button
+            appearance="flat"
+            aria-label="Закрыть сайдбар"
+            iconStart="@tui.x"
+            size="xs"
+            tuiIconButton
+            type="button"
+            (click)="closed.emit()"
+        ></button>
+    </header>
+
+    <nav
+        class="tabs"
+        onboardingStepDirection="left"
+        [onboardingStep]="tabsStep"
+    >
+        <button appearance="secondary" size="s" tuiButton type="button">Общее</button>
+        <button appearance="flat" size="s" tuiButton type="button">Билеты</button>
+        <button appearance="flat" size="s" tuiButton type="button">Отели</button>
+    </nav>
+
+    <label
+        class="note"
+        onboardingStepDirection="left"
+        [onboardingStep]="noteStep"
+    >
+        <span>Что важно не забыть</span>
+        <textarea
+            rows="8"
+            placeholder="Например: купить билеты в музей заранее"
+            [(ngModel)]="note"
+        ></textarea>
+    </label>
+</aside>

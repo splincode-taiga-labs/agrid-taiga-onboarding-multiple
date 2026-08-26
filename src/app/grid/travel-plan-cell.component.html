@@ -1,0 +1,15 @@
+<div class="travel-plan-cell">
+    <span class="name">{{ travelPlan.title }}</span>
+
+    <button
+        appearance="flat"
+        onboardingStepDirection="right"
+        [attr.aria-label]="'Открыть заметки: ' + travelPlan.title"
+        [onboardingStep]="isOnboardingTarget() ? onboardingStep : null"
+        iconStart="@tui.message-square"
+        size="xs"
+        tuiIconButton
+        type="button"
+        (click)="openNotes()"
+    ></button>
+</div>
