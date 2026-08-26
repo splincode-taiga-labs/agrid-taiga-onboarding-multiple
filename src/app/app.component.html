@@ -8,7 +8,7 @@
                 </h1>
             </div>
 
-            <span class="hint">Чтобы повторить демо, удалите @onboarding.* в localStorage</span>
+            <span class="hint">Чтобы повторить демо, удалите &#64;onboarding.* в localStorage</span>
         </header>
 
         <div class="view-bar">
@@ -32,11 +32,7 @@
                                 size="s"
                                 tuiButton
                                 type="button"
-                                [onboardingStep]="
-                                    tripSetupOnboarding?.isSelectedView(view.id)
-                                        ? tripSetupOnboarding?.steps?.[0] ?? null
-                                        : null
-                                "
+                                [onboardingStep]="viewOnboardingStep(view.id)"
                                 (click)="selectView(view.id)"
                             >
                                 {{ view.name }}
