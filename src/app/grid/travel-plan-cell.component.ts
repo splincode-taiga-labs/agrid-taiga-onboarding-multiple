@@ -18,6 +18,7 @@ import {type TravelPlanDto} from '../proposal.dto';
 export class TravelPlanCellComponent implements ICellRendererAngularComp {
     protected readonly sidebar = inject(TravelNotesSidebarService);
     protected readonly travelNotesOnboarding = inject(TRAVEL_NOTES_ONBOARDING);
+    protected readonly onboardingStep = this.travelNotesOnboarding?.steps[0] ?? null;
     protected travelPlan!: TravelPlanDto;
 
     public agInit(params: ICellRendererParams<TravelPlanDto>): void {
@@ -30,6 +31,10 @@ export class TravelPlanCellComponent implements ICellRendererAngularComp {
         this.agInit(params);
 
         return true;
+    }
+
+    protected isOnboardingTarget(): boolean {
+        return this.travelNotesOnboarding?.isFirstStepTarget(this.travelPlan) === true;
     }
 
     protected openNotes(): void {
