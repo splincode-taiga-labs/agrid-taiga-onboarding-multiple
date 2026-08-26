@@ -52,12 +52,12 @@ export class OnboardingHeaderComponent implements IHeaderAngularComp {
 
     protected params!: HeaderParams;
 
-    public agInit(params: HeaderParams): void {
-        this.params = params;
+    public agInit(params: IHeaderParams): void {
+        this.params = params as HeaderParams;
     }
 
-    public refresh(params: HeaderParams): boolean {
-        this.params = params;
+    public refresh(params: IHeaderParams): boolean {
+        this.params = params as HeaderParams;
 
         return true;
     }
